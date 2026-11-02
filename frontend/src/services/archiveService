@@ -1,0 +1,100 @@
+const API = import.meta.env.VITE_API_URL as string | undefined;
+
+export type ArchiveType = "vessel" | "report" | "inspection" | "user";
+
+export interface ArchivedRecord<TPayload = any> {
+  archiveId: string;
+  type: ArchiveType;
+  archivedAt: string;
+  reason: string;
+  returnTo?: string;
+  payload: TPayload;
+}
+
+const getToken = () =>
+  localStorage.getItem("token") || sessionStorage.getItem("token");
+
+const readErrorMessage = async (response: Response, fallback: string) => {
+  try {
+    const err = await response.json();
+    if (typeof err?.message === "string" && err.message.trim()) return err.message;
+  } catch {}
+  try {
+    const txt = await response.text();
+    if (txt?.trim()) return txt;
+  } catch {}
+  return fallback;
+};
+
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+
+async function request<T>(
+  path: string,
+  options: { method: HttpMethod; body?: unknown } = { method: "GET" }
+): Promise<T> {
+  if (!API) throw new Error("VITE_API_URL is missing. Add frontend/.env then restart Vite.");
+
+  const token = getToken();
+  const base = API.replace(/\/$/, "");
+  const url = `${base}${path.startsWith("/") ? path : `/${path}`}`;
+
+  const response = await fetch(url, {
+    method: options.method,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
+  });
+
+  if (!response.ok) {
+    const msg = await readErrorMessage(response, `Request failed (${response.status})`);
+    throw new Error(msg);
+  }
+
+  if (response.status === 204) return undefined as unknown as T;
+
+  const text = await response.text();
+  if (!text) return undefined as unknown as T;
+
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return text as unknown as T;
+  }
+}
+
+
+export async function archiveItem(
+  type: ArchiveType,
+  payload: any,
+  reason: string,
+  returnTo?: string
+): Promise<ArchivedRecord> {
+  return request<ArchivedRecord>("/archive", {
+    method: "POST",
+    body: { type, payload, reason, returnTo },
+  });
+}
+
+
+export async function getArchived(): Promise<ArchivedRecord[]> {
+  return request<ArchivedRecord[]>("/archive", { method: "GET" });
+}
+
+export async function restore(archiveId: string): Promise<ArchivedRecord | null> {
+  return request<ArchivedRecord | null>(`/archive/${encodeURIComponent(archiveId)}/restore`, {
+    method: "POST",
+  });
+}
+
+export async function permanentlyDelete(archiveId: string): Promise<void> {
+  await request<void>(`/archive/${encodeURIComponent(archiveId)}`, {
+    method: "DELETE",
+  });
+}
+
+
+export async function seedArchiveIfEmpty(): Promise<void> {
+  return;
+}
