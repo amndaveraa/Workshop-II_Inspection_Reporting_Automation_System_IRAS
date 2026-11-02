@@ -1,0 +1,275 @@
+.archive-page {
+  padding: 24px 28px;
+  background: #f6f8fb;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.archive-header h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.archive-header p {
+  margin: 8px 0 0;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+/* Info banner */
+.archive-info {
+  margin-top: 22px;
+  border-radius: 16px;
+  border: 1px solid #a7c7ff;
+  background: #eef6ff;
+  padding: 18px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.archive-info-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+  background: #f3f8ff;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.archive-info-title {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.archive-info-text {
+  color: #6b7280;
+  line-height: 1.45;
+}
+
+
+.archive-search-card {
+  margin-top: 18px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.archive-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  height: 52px;
+  padding: 0 16px;
+
+  background: #ffffff !important;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+
+  box-shadow: none;
+  color: #6b7280;
+}
+
+.archive-search input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  width: 100%;
+  font-size: 16px;
+  color: #111827;
+}
+
+.archive-search input::placeholder {
+  color: #9ca3af;
+}
+
+.archive-search:focus-within {
+  border-color: #cbd5e1;
+}
+
+
+.archive-search input:-webkit-autofill,
+.archive-search input:-webkit-autofill:hover,
+.archive-search input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+
+.archive-table-card {
+  margin-top: 18px;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+  overflow: hidden;
+}
+
+
+.archive-tabs {
+  display: flex;
+  gap: 26px;
+  padding: 16px 18px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.archive-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 16px;
+  border-bottom: 2px solid transparent;
+}
+
+.archive-tab.active {
+  color: #1d4ed8;
+  border-bottom-color: #1d4ed8;
+}
+
+.archive-table-wrap {
+  overflow-x: auto;
+}
+
+
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.archive-table thead th {
+  text-align: left;
+  padding: 18px 18px;
+  background: #f8fafc;
+  color: #111827;
+  font-weight: 700;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.archive-table tbody td {
+  padding: 18px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  vertical-align: middle;
+}
+
+.archive-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.muted {
+  color: #9ca3af;
+}
+
+.sub-muted {
+  color: #9ca3af;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.vessel-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+}
+
+.date-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.linklike {
+  color: #1d4ed8;
+  font-weight: 500;
+}
+
+.col-actions {
+  text-align: center;
+  width: 140px;
+}
+
+
+.archive-table td.actions,
+.archive-table th.col-actions {
+  text-align: center;
+}
+
+.archive-table td.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+  white-space: nowrap;
+}
+
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.icon-btn svg {
+  display: block;
+}
+
+.icon-btn.restore {
+  color: #16a34a;
+}
+
+.icon-btn.danger {
+  color: #ef4444;
+}
+
+.icon-btn:hover {
+  background: #f8fafc;
+  border-color: #e5e7eb;
+}
+
+.archive-empty {
+  text-align: center;
+  padding: 36px 18px;
+  color: #6b7280;
+}
