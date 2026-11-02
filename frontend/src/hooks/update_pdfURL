@@ -1,0 +1,25 @@
+import supabase from "../config/supabaseClient";
+
+export default function update_pdfURL() {
+    const update_pdfURL = async (reportId: string | number, pdfUrl: string) => {
+        try {
+            const { data, error } = await supabase
+                .from("report")
+                .update({ pdf_url: pdfUrl })
+                .eq("reportid", reportId)
+                .select();
+
+            if (error) {
+                console.error("Error updating PDF URL:", error);
+                return { error };
+            } else {
+                console.log("PDF URL updated successfully:", data);
+                return { data };
+            }
+        } catch (error) {
+            console.error("Error updating PDF URL:", error);
+            return { error };
+        }
+    };
+    return { update_pdfURL };
+}
