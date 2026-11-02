@@ -1,0 +1,133 @@
+.constraint-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+  }
+  
+  .constraint-modal {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    animation: slideIn 0.2s ease-out;
+    padding: 20px;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .constraint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .constraint-title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  
+  .constraint-icon {
+      flex-shrink: 0;
+  }
+  
+  .constraint-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .constraint-close-btn {
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background 0.2s;
+  }
+  
+  .constraint-close-btn:hover {
+    background: #f3f4f6;
+    color: #374151;
+  }
+  
+  .constraint-body {
+    margin-bottom: 25px;
+  }
+  
+  .constraint-body p {
+    margin: 0;
+    color: #4b5563;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+  
+  .constraint-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  
+  .constraint-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .constraint-cancel {
+    background: white;
+    border: 1px solid #d1d5db;
+    color: #374151;
+  }
+  
+  .constraint-cancel:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+  }
+  
+  .constraint-confirm {
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .btn-blue {
+    background: #3b82f6;
+  }
+  
+  .btn-blue:hover {
+    background: #2563eb;
+  }
+  
+  .btn-red {
+    background: #ef4444;
+  }
+  
+  .btn-red:hover {
+    background: #dc2626;
+  }
+  
