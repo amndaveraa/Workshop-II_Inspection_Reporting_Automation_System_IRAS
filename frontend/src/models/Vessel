@@ -1,0 +1,11 @@
+interface Vessel {
+  equipmentid: string;
+  name: string;
+  status: "active" | "Deactivated" | "archieved";
+  tagno: string;
+  doshregno: string;
+  lastInspectionDate: string;
+  capacity: string;
+  vesseltypeid: string;
+  image: string;
+}
